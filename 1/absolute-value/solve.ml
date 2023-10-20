@@ -1,0 +1,1 @@
+let abs n = max n (-n)
