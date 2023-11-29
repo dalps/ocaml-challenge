@@ -17,11 +17,11 @@ To work on exercises from a local repository, read the [instructions](setup-git)
 1. [Min and max of 3 values](1/minmax3)
 1. [Guess a number](1/guess5)
 1. [7, 11 and doubles](1/7-11-doubles)
+1. [Squirrel play](1/squirrel-play)
 
 ## Level 2
 
 1. [Comparing fractions](2/fractions)
-1. [Bounce](2/bounce)
 1. [Consensus3](2/consensus3)
 1. [Tris](2/tris)
 1. [Poker](2/poker)
@@ -30,9 +30,11 @@ To work on exercises from a local repository, read the [instructions](setup-git)
 1. [Morra](2/morra)
 1. [Sum range](2/sumrange)
 1. [Count zeros of a function](2/countzero)
+1. [Has one](2/has-one)
 
 ## Level 3
 
+1. [Bounce](3/bounce)
 1. [Reverse a list](3/rev-list)
 1. [String of list](3/string-of-list)
 1. [Random list](3/rnd-list)
