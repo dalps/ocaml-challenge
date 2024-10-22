@@ -13,7 +13,7 @@ let ( -?-> ) (o : 'a option) (next : 'a -> 'b option) : 'b option =
 
 It takes an optional value: if it is `None` then it propagates `None` in the return value, otherwise it applies the argument `next` to the value within `Some` to return a new optional value.
 
-It is useful for chaining operations that might fail (i.e. return `None`) at any point. For example, the following assertions hold:
+It is useful for chaining operations that might fail (where failure is intended as returning `None`) at any point. For example, the following assertions hold:
 
 ```ocaml
 assert ((
@@ -33,4 +33,4 @@ Recall the type of [`first_third_fifth`](../first-third-fifth/README.md), which 
 ```ocaml
 first_third_fifth : 'a list -> ('a * 'a * 'a) option 
 ```
-Redefine it in terms of the `-?->` operator.
+Redefine it in terms of the `-?->` operator. Does it make the new definition more concise than the old one?
