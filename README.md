@@ -29,11 +29,14 @@ It is suggested to work on exercises using a local installation of OCaml.
 
 ## Level 2
 
-1. [Characteristic functions](2/characteristic-fun/README.md)
 1. [Function composition](2/compose/README.md)
+1. [Flip arguments](2/flip-curry/README.md)
+1. [Both true](2/both-true/README.md)
 1. [Pipe operator](2/pipeline/README.md)
 1. [Option map](2/option-map/README.md)
 1. [Conditional application](2/apply-if/README.md)
+1. [Restrict domain](2/restrict-dom/README.md)
+1. [Characteristic functions](2/characteristic-fun/README.md)
 1. [Comparing fractions](2/fractions/README.md)
 1. [Consensus3](2/consensus3/README.md)
 1. [Tris](2/tris/README.md)
@@ -42,11 +45,11 @@ It is suggested to work on exercises using a local installation of OCaml.
 1. [Loaded dice](2/loaded-dice/README.md)
 1. [Morra](2/morra/README.md)
 1. [Sum range](2/sumrange/README.md)
-1. [Count zeros of a function](2/countzero/README.md)
 1. [Has one](2/has-one/README.md)
 
 ## Level 3
 
+1. [Count zeros of a function](3/countzero/README.md)
 1. [Bounce](3/bounce/README.md)
 1. [Reverse a list](3/rev-list/README.md)
 1. [String of list](3/string-of-list/README.md)
