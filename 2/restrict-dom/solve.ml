@@ -1,5 +1,8 @@
-let restrict f p = fun x ->
-  if p x then Some (f x) else None
+let restrict (f : 'a -> 'b) (p : 'a -> bool) (x : 'a) : 'b option =
+  if p x then
+    Some (f x)
+  else
+    None
 
 let f1 = restrict succ (fun x -> x>0);;
 assert (f1 1 = Some 2);;
