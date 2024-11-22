@@ -19,9 +19,9 @@ let rec is_bstree (t : 'a btree) (comp : 'a -> 'a -> int) : bool =
     forall (fun n -> incr comparisons; comp v n < 0) right &&
     is_bstree right comp
 
-let count_comparisons (t : 'a btree) = 
+let count_comparisons (test : 'a btree -> bool) (t : 'a btree) = 
   comparisons := 0;
-  let result = is_bstree t compare in
+  let result = test t in
   Printf.printf "Test result: %b\nComparisons: %d\n" result !comparisons
 
 let t : int btree =
@@ -48,3 +48,52 @@ assert (search t compare 1);;
 assert (search t compare 7);;
 assert (search t compare 10);;
 assert (search t compare 42 = false);;
+
+(* ### Slightly more efficient solution *)
+
+let rec rightmost = function
+  | Empty -> None
+  | Node (v, _, Empty) -> Some v
+  | Node (_, _, r) -> rightmost r
+
+let rec leftmost = function
+  | Empty -> None
+  | Node (v, Empty, _) -> Some v
+  | Node (_, l, _) -> leftmost l
+
+let rec is_bstree_2 = function
+  | Empty -> true
+  | Node (v, l, r) ->
+    let vl, vr = rightmost l, leftmost r in
+    Option.fold ~none:true ~some:(fun vl -> incr comparisons; vl < v) vl &&
+    Option.fold ~none:true ~some:(fun vr -> incr comparisons; v < vr) vr &&
+    is_bstree_2 l && is_bstree_2 r
+
+(* ### Extra stuff *)
+
+(* Not a binary search tree... *)
+let rec gen (accu : int btree) (step : int) (max_steps : int) : int btree =
+  if step < max_steps then
+    gen (match Random.int 3 with
+    | 0 -> Empty
+    | 1 -> Node (Random.int 10, accu, Empty)
+    | _ -> Node (Random.int 10, Empty, accu)) (step + 1) max_steps
+  else
+    accu
+    
+let random_btree (max_steps : int) : int btree =
+  gen Empty 0 max_steps
+
+let rec insert (v : 'a) (compare : 'a -> 'a -> int) : 'a btree -> 'a btree = function
+  | Empty -> Node (v, Empty, Empty)
+  | Node (x, l, r) as t ->
+    match compare v x with
+    | n when n < 0 -> Node (x, insert v compare l, r)
+    | n when n > 0 -> Node (x, l, insert v compare r)
+    | _ -> t
+
+let random_list () = List.init (Random.int 20) (fun _ -> Random.int 10)
+
+let random_bstree () =
+  random_list () |>
+  List.fold_left (fun t v -> insert v compare t) Empty
